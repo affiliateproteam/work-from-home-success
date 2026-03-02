@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7-Day Email Sequence — WFH Funnel</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #0f0e0c; --cream: #faf7f2; --warm: #f5ede0;
+    --gold: #c8933a; --gold-light: #e8b96a; --accent: #1a3a2a;
+    --muted: #7a7068; --border: #e8e0d4;
+  }
+  body { font-family: 'DM Sans', sans-serif; background: #e8e0d4; color: var(--ink); }
+  .page { max-width: 820px; margin: 40px auto; background: var(--cream); box-shadow: 0 20px 80px rgba(0,0,0,0.15); }
+
+  /* HEADER */
+  .header {
+    background: var(--accent); padding: 50px 60px; position: relative; overflow: hidden;
+  }
+  .header::before {
+    content: ''; position: absolute; top: -60px; right: -60px;
+    width: 260px; height: 260px; border-radius: 50%; background: rgba(200,147,58,0.1);
+  }
+  .header-tag {
+    display: inline-block; background: rgba(200,147,58,0.2); color: var(--gold-light);
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600;
+    padding: 5px 12px; border-radius: 20px; border: 1px solid rgba(200,147,58,0.3);
+    margin-bottom: 18px; position: relative; z-index: 1;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900;
+    color: #fff; line-height: 1.2; margin-bottom: 12px; position: relative; z-index: 1;
+  }
+  .header h1 span { color: var(--gold-light); }
+  .header p { font-size: 14px; color: rgba(255,255,255,0.55); font-weight: 300; line-height: 1.7; position: relative; z-index: 1; max-width: 540px; }
+
+  /* HOW TO USE */
+  .how-to {
+    background: var(--warm); border-bottom: 1px solid var(--border);
+    padding: 32px 60px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .how-item { }
+  .how-num {
+    font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900;
+    color: var(--gold); margin-bottom: 6px;
+  }
+  .how-item strong { display: block; font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+  .how-item span { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+  /* EMAIL */
+  .email { padding: 50px 60px; border-bottom: 1px solid var(--border); }
+  .email:nth-child(even) { background: #fff; }
+
+  .email-meta {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; flex-wrap: wrap; gap: 12px;
+  }
+  .day-badge {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .day-circle {
+    width: 44px; height: 44px; background: var(--accent); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 900; color: #fff;
+  }
+  .day-info strong { display: block; font-size: 14px; font-weight: 600; }
+  .day-info span { font-size: 12px; color: var(--muted); }
+
+  .goal-tag {
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600; background: rgba(200,147,58,0.1);
+    padding: 5px 12px; border-radius: 20px; border: 1px solid rgba(200,147,58,0.2);
+  }
+
+  .subject-line {
+    background: var(--accent); border-radius: 10px; padding: 14px 20px;
+    margin-bottom: 24px;
+  }
+  .subject-line .sl-label {
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4); font-weight: 600; margin-bottom: 4px;
+  }
+  .subject-line .sl-text {
+    font-size: 15px; color: #fff; font-weight: 500;
+  }
+
+  .email-body {
+    background: #fff; border: 1px solid var(--border); border-radius: 12px;
+    padding: 32px 36px; font-size: 15px; line-height: 1.9; color: #2a2825;
+    font-weight: 300;
+  }
+  .email:nth-child(even) .email-body { background: var(--cream); }
+
+  .email-body p { margin-bottom: 16px; }
+  .email-body p:last-child { margin-bottom: 0; }
+  .email-body strong { font-weight: 500; color: var(--ink); }
+  .email-body .cta-line {
+    display: block; margin: 24px 0; padding: 16px 20px;
+    background: var(--accent); color: #fff; border-radius: 8px;
+    font-weight: 500; font-size: 14px; text-decoration: none;
+    text-align: center;
+  }
+  .email-body .cta-line span { color: var(--gold-light); }
+  .email-body .sig { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .email-body .sig strong { display: block; font-weight: 500; color: var(--ink); }
+  .email-body .sig span { font-size: 13px; color: var(--muted); }
+
+  .ps-box {
+    margin-top: 16px; padding: 14px 18px; background: rgba(200,147,58,0.08);
+    border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0;
+    font-size: 13px; color: var(--muted); font-style: italic; line-height: 1.6;
+  }
+  .ps-box strong { font-style: normal; color: var(--ink); }
+
+  .tips-bar {
+    margin-top: 20px; padding: 14px 18px; background: var(--warm);
+    border-radius: 8px; border: 1px solid var(--border);
+    font-size: 12px; color: var(--muted);
+  }
+  .tips-bar strong { color: var(--accent); font-weight: 600; }
+
+  /* FOOTER */
+  .doc-footer {
+    background: var(--ink); padding: 36px 60px; text-align: center;
+  }
+  .doc-footer p { font-size: 12px; color: rgba(255,255,255,0.3); line-height: 1.8; }
+
+  @media (max-width: 640px) {
+    .header, .email, .doc-footer { padding-left: 24px; padding-right: 24px; }
+    .how-to { grid-template-columns: 1fr; padding: 28px 24px; }
+    .email-body { padding: 22px 20px; }
+  }
+
+  /* SEBASTIAN PROFILE */
+  .seb-profile {
+    display: flex; align-items: center; gap: 16px;
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px; padding: 16px 20px; margin-bottom: 24px;
+  }
+  .seb-profile img {
+    width: 56px; height: 56px; border-radius: 50%; object-fit: cover;
+    border: 2px solid var(--gold-light); flex-shrink: 0;
+  }
+  .seb-profile-text .sn { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 2px; }
+  .seb-profile-text .st { font-size: 12px; color: rgba(255,255,255,0.5); }
+
+  /* HEADER PORTRAIT */
+  .header-portrait {
+    display: flex; align-items: center; gap: 16px; margin-top: 28px;
+    padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);
+    position: relative; z-index: 1;
+  }
+  .header-portrait img {
+    width: 56px; height: 56px; border-radius: 50%; object-fit: cover;
+    border: 2px solid var(--gold-light); flex-shrink: 0;
+  }
+  .header-portrait-text .hp-name { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 2px; }
+  .header-portrait-text .hp-title { font-size: 12px; color: rgba(255,255,255,0.45); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-tag">Copy & Paste · Systeme.io Ready</div>
+    <h1>Your <span>7-Day Email Sequence</span><br>WFH Affiliate Funnel</h1>
+    <div class="header-portrait">
+    <img src="https://raw.githubusercontent.com/affiliateproteam/wfh-funnel/main/sebastian.png" alt="Sebastian" />
+    <div class="header-portrait-text">
+      <div class="hp-name">Sebastian</div>
+      <div class="hp-title">Created this sequence · Affiliate Marketer</div>
+    </div>
+  </div>
+
+  <p>7 emails designed to build trust, deliver value, and convert subscribers into commissions — for Systeme.io (recurring) and Legendary Marketer (high ticket).</p>
+  </div>
+
+  <div class="how-to">
+    <div class="how-item">
+      <div class="how-num">01</div>
+      <strong>Copy each email</strong>
+      <span>Paste subject line and body into your Systeme.io automation sequence.</span>
+    </div>
+    <div class="how-item">
+      <div class="how-num">02</div>
+      <strong>Replace [YOUR NAME]</strong>
+      <span>Personalize with your name and optionally a short backstory in Day 2.</span>
+    </div>
+    <div class="how-item">
+      <div class="how-num">03</div>
+      <strong>Add your affiliate links</strong>
+      <span>Replace [SYSTEME LINK] and [LM LINK] with your actual affiliate URLs.</span>
+    </div>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="email">
+    <div class="email-meta">
+      <div class="day-badge">
+        <div class="day-circle">1</div>
+        <div class="day-info">
+          <strong>Day 1 — Sent immediately</strong>
+          <span>Deliver the lead magnet · Build first impression</span>
+        </div>
+      </div>
+      <div class="goal-tag">Goal: Deliver & Welcome</div>
+    </div>
+    <div class="subject-line">
+      <div class="sl-label">Subject Line</div>
+      <div class="sl-text">🎁 Here's your free guide (+ one thing to do right now)</div>
+    </div>
+    <div class="email-body">
+      <p>Hey [First Name],</p>
+      <p>Welcome — and thank you for downloading the guide. I'm [YOUR NAME], and I created this resource because I know exactly how overwhelming it can be to search for legit ways to make money from home.</p>
+      <p>You can download your free guide right here:</p>
+      <a class="cta-line" href="#">👉 Download: <span>5 Legit Ways to Make Money From Home in 2025</span></a>
+      <p>Over the next few days, I'll be sending you practical tips, honest recommendations, and the exact tools I use to earn income online — all completely free.</p>
+      <p>But before you dive in, I want to ask you one question:</p>
+      <p><strong>What's your #1 goal when it comes to working from home?</strong></p>
+      <p>Just hit reply and tell me. I read every response personally, and your answer helps me send you content that's actually useful — not just generic advice.</p>
+      <p>Talk soon,</p>
+      <div class="sig">
+        <strong>[YOUR NAME]</strong>
+        <span>Founder, [Your Brand/Site Name]</span>
+      </div>
+      <div class="ps-box">
+        <strong>P.S.</strong> — If you're serious about turning this into real monthly income, I'd recommend watching <strong>this free 15-minute video</strong> by a marketer who went from broke to $100k/year online. It's the best thing I've seen for beginners: <strong>[LM LINK]</strong>
+      </div>
+    </div>
+    <div class="tips-bar"><strong>💡 Systeme.io tip:</strong> Set this email to send immediately (0 day delay) after opt-in. Include your actual lead magnet download link or PDF attachment.</div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="email">
+    <div class="email-meta">
+      <div class="day-badge">
+        <div class="day-circle">2</div>
+        <div class="day-info">
+          <strong>Day 2 — Next day</strong>
+          <span>Your story · Build trust and relatability</span>
+        </div>
+      </div>
+      <div class="goal-tag">Goal: Build Trust</div>
+    </div>
+    <div class="subject-line">
+      <div class="sl-label">Subject Line</div>
+      <div class="sl-text">I was completely lost (here's what changed everything)</div>
+    </div>
+    <div class="email-body">
+      <p>Hey [First Name],</p>
+      <p>Before I start sharing tips and tools with you, I think it's important you know a little about where I'm coming from.</p>
+      <p>Not long ago, I was exactly where you might be right now — searching for ways to earn money from home, trying different things, and feeling frustrated when nothing seemed to work.</p>
+      <p>I tried survey sites. I tried dropshipping. I even tried selling handmade stuff online. Some of it made me a few dollars. Most of it was a waste of time.</p>
+      <p><strong>What finally changed things for me was finding one simple model and sticking with it.</strong></p>
+      <p>Affiliate marketing. Specifically, promoting tools that pay recurring commissions — meaning I get paid every month for a customer I referred once.</p>
+      <p>It wasn't overnight. But once I understood the model and set up a simple system, things started to click.</p>
+      <p>Tomorrow I'll show you the exact free tool I used to build my first funnel — and how you can set yours up in an afternoon.</p>
+      <p>Talk soon,</p>
+      <div class="sig">
+        <strong>[YOUR NAME]</strong>
+        <span>[Your Brand/Site Name]</span>
+      </div>
+      <div class="ps-box">
+        <strong>P.S.</strong> — Did you get a chance to watch that free video I mentioned yesterday? Legendary Marketer's training is the best free resource I've found for beginners who are serious about this: <strong>[LM LINK]</strong>
+      </div>
+    </div>
+    <div class="tips-bar"><strong>💡 Tip:</strong> Personalize this email with 2-3 sentences of your real backstory. Authenticity converts. Even if brief, your genuine experience builds far more trust than a polished script.</div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="email">
+    <div class="email-meta">
+      <div class="day-badge">
+        <div class="day-circle">3</div>
+        <div class="day-info">
+          <strong>Day 3 — Day after</strong>
+          <span>Introduce Systeme.io · Soft sell recurring product</span>
+        </div>
+      </div>
+      <div class="goal-tag">Goal: Promote Systeme.io</div>
+    </div>
+    <div class="subject-line">
+      <div class="sl-label">Subject Line</div>
+      <div class="sl-text">The free tool I use to run my entire online business</div>
+    </div>
+    <div class="email-body">
+      <p>Hey [First Name],</p>
+      <p>Yesterday I mentioned the model that finally worked for me. Today I want to show you the tool that makes it all possible — and the best part is, it's completely free to start.</p>
+      <p>It's called <strong>Systeme.io</strong>.</p>
+      <p>Here's what it does in one place:</p>
+      <p>✅ Builds your landing pages and squeeze pages<br>
+      ✅ Manages your email list and autoresponder<br>
+      ✅ Hosts your digital products and funnels<br>
+      ✅ Runs your affiliate program<br>
+      ✅ Processes payments</p>
+      <p>Before I found Systeme.io, I was paying for 4 different tools separately. Now I have everything under one roof — for free.</p>
+      <p><strong>The free plan includes up to 2,000 contacts and 3 funnels.</strong> That's more than enough to start making money.</p>
+      <a class="cta-line" href="#">👉 <span>Create your free Systeme.io account here →</span> [SYSTEME LINK]</a>
+      <p>Once you're in, reply to this email and let me know — I'll send you a quick-start checklist to help you set up your first funnel fast.</p>
+      <p>Talk soon,</p>
+      <div class="sig">
+        <strong>[YOUR NAME]</strong>
+        <span>[Your Brand/Site Name]</span>
+      </div>
+      <div class="ps-box">
+        <strong>P.S.</strong> — Systeme.io also has an affiliate program that pays <strong>40% recurring commissions</strong>. So if you refer others to use it, you earn every month. Win-win. Sign up free here: <strong>[SYSTEME LINK]</strong>
+      </div>
+    </div>
+    <div class="tips-bar"><strong>💡 Affiliate note:</strong> Sign up at systeme.io/affiliate to get your unique affiliate link. This email alone — sent to a warm list — can generate consistent recurring commissions month after month.</div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="email">
+    <div class="email-meta">
+      <div class="day-badge">
+        <div class="day-circle">4</div>
+        <div class="day-info">
+          <strong>Day 4 — Next day</strong>
+          <span>Pure value · No pitch · Build goodwill</span>
+        </div>
+      </div>
+      <div class="goal-tag">Goal: Deliver Value</div>
+    </div>
+    <div class="subject-line">
+      <div class="sl-label">Subject Line</div>
+      <div class="sl-text">3 mistakes that keep beginners broke online (avoid these)</div>
+    </div>
+    <div class="email-body">
+      <p>Hey [First Name],</p>
+      <p>Today, no tools to recommend. No links to click. Just something I wish someone had told me when I was starting out.</p>
+      <p>Here are the 3 biggest mistakes I see beginners make — and how to avoid them:</p>
+      <p><strong>Mistake #1: Trying too many things at once.</strong><br>
+      Most people jump from model to model — affiliate marketing one week, dropshipping the next, then a course, then print-on-demand. The result? Progress on nothing. Pick one model. Give it 90 days before deciding it doesn't work.</p>
+      <p><strong>Mistake #2: Waiting until everything is "perfect."</strong><br>
+      Your first landing page will be ugly. Your first email will be awkward. That's fine. Done is better than perfect. You learn by doing, not by planning.</p>
+      <p><strong>Mistake #3: Skipping the email list.</strong><br>
+      Social media algorithms change. Platforms ban accounts. Your email list is the only audience you truly own. Start building it from day one — even if it's just 10 people.</p>
+      <p>Avoid these three and you'll already be ahead of 90% of people who try to make money online.</p>
+      <p>Tomorrow I've got something important to share about scaling beyond your first $500/month.</p>
+      <p>Talk soon,</p>
+      <div class="sig">
+        <strong>[YOUR NAME]</strong>
+        <span>[Your Brand/Site Name]</span>
+      </div>
+    </div>
+    <div class="tips-bar"><strong>💡 Strategy note:</strong> This is a pure value email — no pitch. It builds trust and keeps open rates high. After 3 promotional touches, a value email resets the relationship and reduces unsubscribes significantly.</div>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="email">
+    <div class="email-meta">
+      <div class="day-badge">
+        <div class="day-circle">5</div>
+        <div class="day-info">
+          <strong>Day 5 — Next day</strong>
+          <span>Main pitch · Legendary Marketer · High ticket</span>
+        </div>
+      </div>
+      <div class="goal-tag">Goal: Legendary Marketer Pitch</div>
+    </div>
+    <div class="subject-line">
+      <div class="sl-label">Subject Line</div>
+      <div class="sl-text">How people go from $0 to $1,000/month online (real blueprint)</div>
+    </div>
+    <div class="email-body">
+      <p>Hey [First Name],</p>
+      <p>Yesterday I talked about the mistakes that keep people stuck. Today I want to show you what the path forward actually looks like for people who break through.</p>
+      <p>The difference between people who make a few dollars online and those who consistently earn $1,000, $5,000, or even $10,000+ per month usually comes down to one thing:</p>
+      <p><strong>They followed a proven system instead of figuring it out alone.</strong></p>
+      <p>That's why I want to recommend something I genuinely believe in.</p>
+      <p>Legendary Marketer has a free video training that walks you through exactly how to build a real online business — from picking the right niche, to building your funnel, to scaling with paid and free traffic.</p>
+      <p>It's not a sales pitch. It's a 15-minute training from someone who's built a 8-figure online business and has helped thousands of beginners get their first commission.</p>
+      <a class="cta-line" href="#">👉 <span>Watch the free training here →</span> [LM LINK]</a>
+      <p>I'll be honest with you: this is an affiliate link, which means I earn a commission if you decide to go further with their paid programs. But I only recommend it because the free content alone is worth your time.</p>
+      <p>Watch it, take notes, and let me know what you think.</p>
+      <p>Talk soon,</p>
+      <div class="sig">
+        <strong>[YOUR NAME]</strong>
+        <span>[Your Brand/Site Name]</span>
+      </div>
+      <div class="ps-box">
+        <strong>P.S.</strong> — The training is free. You have nothing to lose and everything to gain from a 15-minute watch. <strong>[LM LINK]</strong>
+      </div>
+    </div>
+    <div class="tips-bar"><strong>💡 Transparency note:</strong> The disclosure "this is an affiliate link" in this email actually increases trust and conversions. Modern email audiences respond better to honesty than to hidden promotions.</div>
+  </div>
+
+  <!-- DAY 6 -->
+  <div class="email">
+    <div class="email-meta">
+      <div class="day-badge">
+        <div class="day-circle">6</div>
+        <div class="day-info">
+          <strong>Day 6 — Next day</strong>
+          <span>Handle objections · Address "I've tried before"</span>
+        </div>
+      </div>
+      <div class="goal-tag">Goal: Overcome Objections</div>
+    </div>
+    <div class="subject-line">
+      <div class="sl-label">Subject Line</div>
+      <div class="sl-text">"I've tried this before and it didn't work" — let's talk</div>
+    </div>
+    <div class="email-body">
+      <p>Hey [First Name],</p>
+      <p>I want to address something today, because I know it's on a lot of people's minds.</p>
+      <p><strong>"I've tried making money online before. It didn't work. Why would this be any different?"</strong></p>
+      <p>It's a fair question. And honestly — it might not be different, if you approach it the same way.</p>
+      <p>But here's what I've noticed about people who try and fail:</p>
+      <p>They either chose the wrong model for their situation, they gave up before the compounding effect kicked in, or they tried to do too many things without a clear system.</p>
+      <p>The people I've seen succeed — even total beginners — share one thing in common: they committed to a single model for at least 60-90 days and followed a proven process instead of improvising.</p>
+      <p>That's it. No magic. No secret traffic source. Just consistency and the right system.</p>
+      <p>If that sounds doable to you, then you're ready. The free tools are there. The training is there. The only thing left is the decision.</p>
+      <p>Still haven't watched the free video training? Here it is one more time:</p>
+      <a class="cta-line" href="#">👉 <span>Free Training: Build a Real Online Business →</span> [LM LINK]</a>
+      <p>Talk soon,</p>
+      <div class="sig">
+        <strong>[YOUR NAME]</strong>
+        <span>[Your Brand/Site Name]</span>
+      </div>
+      <div class="ps-box">
+        <strong>P.S.</strong> — And if affiliate marketing isn't your thing, remember: Systeme.io (free) lets you sell your own digital products too. <strong>[SYSTEME LINK]</strong>
+      </div>
+    </div>
+    <div class="tips-bar"><strong>💡 Psychology note:</strong> This email targets the "skeptical but interested" segment of your list — often 30-40% of subscribers. Addressing their objection directly and empathetically is one of the highest-converting email types.</div>
+  </div>
+
+  <!-- DAY 7 -->
+  <div class="email">
+    <div class="email-meta">
+      <div class="day-badge">
+        <div class="day-circle">7</div>
+        <div class="day-info">
+          <strong>Day 7 — Final day</strong>
+          <span>Strong CTA · Both offers · Transition to broadcast</span>
+        </div>
+      </div>
+      <div class="goal-tag">Goal: Final Push + Close</div>
+    </div>
+    <div class="subject-line">
+      <div class="sl-label">Subject Line</div>
+      <div class="sl-text">Last email in this series — here's where to go from here</div>
+    </div>
+    <div class="email-body">
+      <p>Hey [First Name],</p>
+      <p>This is the last email in my welcome series — but it's definitely not the last you'll hear from me.</p>
+      <p>Before I wrap up, I want to make sure you have everything you need to take action:</p>
+      <p><strong>🔧 Your free tools:</strong><br>
+      → <strong>Systeme.io</strong> — free funnel builder, email autoresponder, and affiliate platform. Everything you need in one place: <strong>[SYSTEME LINK]</strong></p>
+      <p><strong>📚 Your free training:</strong><br>
+      → <strong>Legendary Marketer</strong> — the best free video training I know of for building a real online income from scratch: <strong>[LM LINK]</strong></p>
+      <p><strong>📖 Your free guide:</strong><br>
+      → The guide you downloaded covers 5 income models. Pick one. Start this week. Give it 90 days.</p>
+      <p>Here's my honest advice: don't wait for the "perfect moment." It doesn't exist. The people making money online right now started before they were ready, learned as they went, and adjusted along the way.</p>
+      <p><strong>The only thing standing between you and your first commission is action.</strong></p>
+      <p>I'll keep sending you practical tips, tools, and strategies a few times a week. Reply anytime — I genuinely read every message.</p>
+      <p>To your success,</p>
+      <div class="sig">
+        <strong>[YOUR NAME]</strong>
+        <span>[Your Brand/Site Name]</span>
+      </div>
+      <div class="ps-box">
+        <strong>P.S.</strong> — If you've already signed up for Systeme.io and want a quick-start checklist for setting up your first funnel, just reply with "CHECKLIST" and I'll send it over.
+      </div>
+    </div>
+    <div class="tips-bar"><strong>💡 After Day 7:</strong> Switch to a regular broadcast schedule — 3x per week. Mix value emails (tips, case studies, lessons) with promotional emails (2:1 ratio). Continue promoting both Systeme.io and Legendary Marketer as your core offers.</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <p>
+      7-Day Email Sequence · WFH Affiliate Funnel · [YOUR BRAND] · 2025<br>
+      Replace all [PLACEHOLDERS] before uploading to Systeme.io.<br>
+      Affiliate links: Systeme.io Affiliate Program · Legendary Marketer Affiliate Program
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
