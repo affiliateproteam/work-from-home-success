@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zero to First Squeeze Page – AffiliateProTeam by Sebastian</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f0e0c;
+    --cream: #faf7f2;
+    --warm: #f5ede0;
+    --gold: #c8933a;
+    --gold-light: #e8b96a;
+    --accent: #1a3a2a;
+    --muted: #7a7068;
+    --light-border: #e8e0d4;
+  }
+
+  body { font-family: 'DM Sans', sans-serif; background: #e8e0d4; color: var(--ink); }
+
+  .page {
+    max-width: 780px;
+    margin: 40px auto;
+    background: var(--cream);
+    box-shadow: 0 20px 80px rgba(0,0,0,0.15);
+  }
+
+  /* ── COVER ── */
+  .cover-photo {
+    position: absolute;
+    top: 32px; right: 40px;
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    border: 3px solid rgba(200,147,58,0.6);
+    z-index: 2;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .cover-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+  .cover {
+    background: var(--accent);
+    padding: 70px 60px;
+    position: relative;
+    overflow: hidden;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 360px; height: 360px;
+    border-radius: 50%;
+    background: rgba(200,147,58,0.12);
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .cover-tag {
+    display: inline-block;
+    background: rgba(200,147,58,0.25);
+    color: var(--gold-light);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(200,147,58,0.35);
+    margin-bottom: 28px;
+    width: fit-content;
+    position: relative;
+    z-index: 1;
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  .cover h1 span { color: var(--gold-light); }
+  .cover-sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 480px;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 50px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    position: relative;
+    z-index: 1;
+  }
+  .cover-footer span { font-size: 12px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; text-transform: uppercase; }
+  .cover-footer .edition { color: var(--gold-light); font-weight: 500; }
+
+  /* ── SHARED ── */
+  .section-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  /* ── INTRO ── */
+  .intro {
+    padding: 56px 60px 40px;
+    border-bottom: 1px solid var(--light-border);
+  }
+  .intro h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+    line-height: 1.3;
+  }
+  .intro p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 14px;
+    font-weight: 300;
+  }
+  .intro p strong { color: var(--ink); font-weight: 500; }
+  .promise-box {
+    background: var(--warm);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    padding: 20px 24px;
+    margin-top: 28px;
+    margin-bottom: 28px;
+  }
+  .promise-box p { margin: 0; font-size: 14px; color: var(--ink); font-weight: 400; font-style: italic; }
+  .author-box {
+    display: flex; align-items: center; gap: 18px;
+    background: var(--accent); border-radius: 14px;
+    padding: 22px 26px; margin-top: 8px;
+  }
+  .author-box-text .author-name { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+  .author-box-text .author-bio { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; font-weight: 300; }
+
+  /* ── STEP SECTIONS ── */
+  .step-section {
+    padding: 52px 60px;
+    border-bottom: 1px solid var(--light-border);
+  }
+  .step-section:nth-child(odd) { background: #fff; }
+  .step-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.55rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 18px;
+  }
+  .step-section p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 14px;
+  }
+  .step-section p strong { color: var(--ink); font-weight: 500; }
+
+  /* Step number badge */
+  .step-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .step-number {
+    width: 36px; height: 36px;
+    background: var(--gold);
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .step-label {
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600;
+  }
+
+  /* Sub-steps list */
+  .substeps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .substeps li {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 14px 16px;
+    background: var(--warm);
+    border: 1px solid var(--light-border);
+    border-radius: 10px;
+    font-size: 14px; color: var(--ink); line-height: 1.6; font-weight: 300;
+  }
+  .substeps li::before {
+    content: attr(data-n);
+    background: var(--accent);
+    color: var(--gold-light);
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .substeps li strong { color: var(--ink); font-weight: 600; }
+
+  /* Tip box */
+  .tip-box {
+    background: rgba(26,58,42,0.06);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 20px;
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  .tip-box strong { font-weight: 600; }
+
+  /* Affiliate link button */
+  .link-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gold);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 600;
+    padding: 12px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 16px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .link-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ── FUNNEL DIAGRAM ── */
+  .funnel-flow {
+    display: flex; align-items: center; gap: 8px;
+    flex-wrap: wrap; margin: 24px 0;
+  }
+  .funnel-step {
+    background: var(--accent); color: #fff;
+    font-size: 12px; font-weight: 500;
+    padding: 8px 14px; border-radius: 6px;
+  }
+  .funnel-arrow { color: var(--gold); font-weight: 700; font-size: 16px; }
+
+  /* ── CHECKLIST ── */
+  .checklist-section {
+    padding: 52px 60px;
+    border-bottom: 1px solid var(--light-border);
+    background: var(--accent);
+  }
+  .checklist-section .section-eyebrow { color: var(--gold-light); }
+  .checklist-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem; font-weight: 900;
+    color: #fff; margin-bottom: 10px;
+  }
+  .checklist-section > p {
+    font-size: 14px; color: rgba(255,255,255,0.55);
+    font-weight: 300; margin-bottom: 28px; line-height: 1.7;
+  }
+  .check-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .check-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; padding: 14px 18px;
+  }
+  .check-box {
+    width: 20px; height: 20px; border-radius: 4px;
+    border: 2px solid rgba(200,147,58,0.5);
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .check-item-text { font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.5; font-weight: 300; }
+  .check-item-text strong { color: #fff; font-weight: 500; }
+
+  /* ── FINAL CTA ── */
+  .final-cta {
+    padding: 60px 60px;
+    text-align: center;
+    border-bottom: 1px solid var(--light-border);
+  }
+  .final-cta .section-eyebrow { text-align: center; }
+  .final-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem; font-weight: 900;
+    margin-bottom: 14px; line-height: 1.2;
+  }
+  .final-cta h2 span { color: var(--gold); }
+  .final-cta p {
+    font-size: 15px; color: var(--muted);
+    font-weight: 300; max-width: 480px;
+    margin: 0 auto 28px; line-height: 1.7;
+  }
+  .cta-btn {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 600;
+    padding: 18px 36px; border-radius: 10px;
+    background: var(--accent); color: #fff;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(26,58,42,0.25);
+  }
+  .cta-btn:hover { background: #0f2217; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(26,58,42,0.35); }
+  .cta-note { font-size: 12px; color: var(--muted); margin-top: 14px; }
+
+  /* ── BACK COVER ── */
+  .back-cover { background: var(--ink); padding: 28px 60px; text-align: center; }
+  .back-cover p { font-size: 12px; color: rgba(255,255,255,0.3); line-height: 1.8; }
+  .back-cover a { color: rgba(255,255,255,0.4); text-decoration: none; }
+
+  @media print {
+    body { background: #fff; }
+    .page { margin: 0; box-shadow: none; max-width: 100%; }
+  }
+  @media (max-width: 640px) {
+    .cover, .intro, .step-section, .checklist-section, .final-cta, .back-cover {
+      padding-left: 28px; padding-right: 28px;
+    }
+    .cover h1 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-tag">Free Guide · AffiliateProTeam</div>
+    <h1>From Zero to Your<br>First <span>Live Squeeze Page</span></h1>
+    <p class="cover-sub">A complete step-by-step setup guide — from creating your free account to promoting your first page and building your email list with free traffic.</p>
+    <div class="cover-footer">
+      <span>AffiliateProTeam.com</span>
+      <span class="edition">by Sebastian · 2025</span>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <div class="section-eyebrow">Welcome</div>
+    <h2>Everything You Need — In the Right Order</h2>
+    <p>If you've ever felt overwhelmed trying to get started online, this guide is for you. I'm not going to throw 20 tools at you and leave you to figure it out. Instead, I'm going to walk you through exactly what to do — step by step — until your first squeeze page is live and pulling in subscribers.</p>
+    <p>By the time you finish this guide, you will have <strong>a real, working funnel</strong>: a free account on the platform I use, a squeeze page that captures email addresses, a growing list of subscribers, and a clear plan for sending your first free traffic to it.</p>
+    <p>Everything in here is free to set up. No paid tools required to get started.</p>
+    <div class="promise-box">
+      <p>"I built this guide because getting started shouldn't require a course, a coach, or a credit card. Follow these steps and you'll have a live funnel before most people finish reading about it."</p>
+    </div>
+    <div class="author-box">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG4AAABuCAYAAADGWyb7AAA4jklEQVR4nNW9ebxlV1Xv+53danZ7mmpTaSoJSUiAAAYFARGuXrC5+sHuqu8+5eLTz7XX55Pn86IXEXx61ff86LW7oKI8pFeQTggioQuEkAQIVVDpKklVpbrT7bPbtdZs3h9z7X1Opa2qnKrCUZ9TdWrvtddae4415xzNb/yG4N+4vO13fihcvKPD9vmcuVZOM5NkRqGUIhDw3jOpLMOJZ60/YWl1zKHjfe57aJlX//nHxIW+/7OVf1M3ftMbXhmuumSBXQsZMktACQgefAAXwHvwAIEQ4meEqL+iBJQEKeIPCrzDTyzHV8bc9eAyt37tGK/6ow//mxiTr+ubvOmNrww3XLOb1rZGHPjKQWWh8jgfCCGAEAg2FCRmf50qUZFRoVGnAYFASQFGgtFgFLjAYGXE7V87zgdvvofff9Mnvy7H6Ovupj79Nz8Znvf03ahOGhU1KXGVxxOVI4VAPM5d1xPtjL5YCOBDfBCEAK0U5BqMwa1P+Ny+o7zzo/v5k7fe/HUzXl83N7J806+HhR0tsBVhXGJdeFxFBeKAh3pNFEyPj+/7+r1Qf8XN7z2RxL0xfl4rgcgT0JrVkwPe+/ED/MRvveeCj9sFvwF/22uCyA0MJ9jKgpBIKR7zxkIA7wNaAYkApQAFCLABVwWCEBvviwDegbX4MuCDQAkZXz8NCcTrETzaaGhmhHHJP998kO/+hf/vgo3fBbtw+NJrAxpCv8R5j5Ty8ZfAqcISIE+oBoK7j07Y98CYuw8PONkrOLEyotcvIECnZdgxn7F7W5u9u1s868oWV19kEKaCscV64v52JvccwHuPkgLRysDBhz51N9/98+dfgef9gv723woiEbh+QeD0Bs85j04UNBJOHqv4m3++n3+++UHuvn+F/nBCVVmkEEghUZL4rYTEhfivMQkL812uv3o7L3/RpfzHFy2S5RY/KglBIM9QgdN7kkIg2zmhtPzd++/kla/5x/M2nuftQksf//WwuKuB743xPqCUfMLPeB+QAkQ746EjY974vrt5+40HuOuBFTIlSY3EGI0QEpAg4l4mhEBQ740CXJB45ygqh9AJz3n6xfzM91/D979gHoTDTtwZz76pOBeQMiA7TZZOrPPbf/kp/sfbP3vOx/W8KC589fWBwYSqtCitTuuiznl0rvFe8z/fe4A/fPNt3PfgSfIsoZGlRP8Aonbi71LK+qV4hVD/LlAgQInoAowKR1Cal77gCl79Y9dx/TUZbljUyj67IbHOYZK4B37sk/fy7f/lTed0bM/pydc+9V9Ddz6jWh/HfeE0B8V5j26lHDg45Ff+8NN86FMHyDJNnhq8j4qaKglAymicbD6/ECK6EAgkkpm5IwRKCSSB3sSy0G3xa6+8gZ/5vouhnOAsZ7V0QtwDnfeYTk5vreD/+P0P89fvu+2cjPE5U1zY//rAsMBW9rSWxak479DNBu+96Qg/+7s3cvT4Kt12RvCCQEAIhUAihKD2v+Nr9boopaz9MTGbcQRqxdXLqJAIKTBKUjnHqPD8yHddxx/8/DPopBZb+rNeOqFeLYyCZs5fvf1Wfuq337vl43xOFBcOvC7Y5VE0689g6XHOo7sN3vgP9/Czv/PPKErSJMEHUe9jgRCm+5esfzbPMjX7/8P/BQFh8+fizBIyIEVgdb3kW597OW/6zReyo2txE3fWMw+iD+i9Ry80+ewtD/L8V7xxS8d6S0/24EdeFS7Z06LqjdFandFnrXOYbs47P3iQ//U3348WDqU13ofZLKnNRQCkUDNFbSjpkdcUQsSPhKi46HaITZ/zIMBowepgwvOuv4y/f92L2NG22CqgznLPm30v6zDdBocP9/mBX3k7n99/aEvGfMsUt37zq0O7oahGFfoMlkaIlpluJ3zi88f4zl/8R4IrUVrivUewobDNs0WgkFLHL/E4itsQMVtipz8x1hnq5TYqb2l9zLc/9xre+bsvJGGC8JzRqvFoYq3HNA39keOHfuVdfORzdz3pcT+zEX4MmXzhNaGdSuzInrHSfACVSpaXS372926kLEZoDd67DYMiBriYPmfTyH+o44vTsFdMDfhN/390CSHgvMMHTwh+tqyVlWehlfMvnz3Aa//qTlSW45/gXKcjWkvsqKKdSt7/pz/K97/k2id90ietOHvHb4UkOFzpUOoMIxH1314k/Mzvfpz9dx8lyyTWufqI6Uw69RPT3zYraDr4s9ceMTRxdvng8N7WPxXOuU0/lrKq6DQNf/yWz/PG9z6A7mQ458/oez2aKCVxpUMHyzv/3x/m+1785JT3pKZs8YXXBI0lVOGsNnLvA6qd8f/87Z386h9+iGZTzYLL09uTtQ82XSpnSyYbhsnUHYCo5BAEUXNydp54bKiv69mYxRuycT6Jcw6TZXz4T76HG57axI3tkzJWNn9nqSWVUHzvz7+Vj3zu7rM66VnfSf/m3wjNFHzpz05pAWQiueeBEc/7ybcyGAxQklk0f3p7YtP+dso+N9uvIASJD/GTUtY+mwAp4vIafB1njFZKvegGqD09gBDirJpeR2vJaDzhhusv5yN/8h3ksohW6dkO2Obv7j3SaIZV4N+98k3c+rUjZ3zas1oqD934qtBqSFxxdkoDCN4jsoQ3vPeLrCyvkmoVLb9TDgoE/KbZEmdKqF/33uGsg2DJE0G3ZdjWTdi5mLJnMeeixQa75jO2zyXMdTTthiA1IHFYV2GtxbkK52w8l7P17xZrLc085XN3HOQP3rIf2czxW7BkQj2jS0srk7znj3+US3bOnfGyeVajHr7y2lCtT87YEJmKDwGZKO4/NOB5r/x7eoNR/QCIR+guOtBxpk0zbwJFCB6tFM1M08oNjdSQGkmi5Szg7EN06Ms6Y269x7pAWQaGRcWoqCgrO5uD05kqRHQ3lFLxd5Ny459+H8+5toEbPzn/brM459GdnFtuO8zzXvGGMzrpGY98OPC6UPXGZ600AHxAJAl//u4vcWKlh04UPs6hR14vhBnoxwePdxZ8RTNTbOtmbO9kzDcNrVTRTBTNxNDJUlpZQivTtFJDu5HQzhJaqSE3ijwRdBqabtPQyjWKeF4fLCG4aOgEj/MOIQLrvXV+64234rxBnGYe73REKUnVG/Hc5+7lr37j5Wd04jPScvjq60O1Ooip/bOUEEBqwUqv4tk//hYeOr6GNnKThfgotyQEIsiYj5OCbiun0zQ0EkMrMWSpxmiNURKjFEpEhJfzUQE+BKwPlFXFuLSMK0tROSaFpbQxa7A+Kqisq31EgZASJRVIhZYwrgT/9Ec/xHe+YBE7LJ9USOzhYp3HzDd55av+kb/9wO2ndeLTnja9T786uMEkfpknIT54yAyfvOMIh46uYBLNE7lKwXu8txglWOhkzLdTOo2E+VZGt5kx18iZbzTo5jmtLCXVkkQJkum/UqKFxEhFahS5MTSMppEociPIjaTbSMmMjEgxPN5VeFcRalCSLSf80du/jLWqNnq2TqSUuMGYP/6/XsZVl2w7rZOftuI6cymhco+bpT4tCQKE5MZbHyB4u7H0TDEiU4d6A1RC8AEjBXOthFYel8V2ZmhmhmZqaCSazEi0FmgpyBJNliakRpFqTWIUqRZkiaKRaBpGRaUlKi6dWpAbQaeRkCUmQhUAF+IDUzlPM1N88ta7+dyda8jc4PzWKU8KCJWnM5fxxld/z+l95nQOCl97fah64zOK8j/qeQClBLZf8fl9R0DI2gyPOBEQiFDDQWrlBR+QQtBqZOSJJk8UzVTTSAyZUSSJQicKZSRKCbRWaKMxWmK0Ikk0WRo/l2oRFWgUiZZxZmpBYiSJgkRBK9OkRs8eIO8dwTuQgmI05D2fOgja8ITLxBlK3O8mfOuLn8LP/dDznvDkT6iJ1Zt+PfjB5EkrDeKMEkZy+ESPg0d6aK3wjmlQo8bvnOoYB6CRGfJE0UgVnSwhTwyZliQiRjLxAWoMiVYbgWStJEoIRAioOo2jAS0FRkqkACXiLNVKYKQgUdBIVa08D8ETvIsWoBZ89HMHGa45lBaPDM48SVFK4PtjXv9zL+bi7d3HPf0TamNuZxNX2Ce/RFI/pEZx/0PrrPXGmOhx1z/TaEZ9LFHRmZY0E0kzU7RSQ6JrXAkbYS7vHeDRNQRPBIsUHiVq2F49g4OvA8ohWotaCJSU6Hq2JVqSJZpGImkaSaoFzpV1eMyRpoq7Dh7jCwdWEZmeLalbJUIIfOWY29nid372JY977OMqzt3+W8H1RqgzTNE8poQAQtIbFnhvpy/yKIFF8AEJ5Gncj5qJwigBIeB9wHkfswdCoJRCqo0IiBAeKULcQwlx5smY+U6MppEZOnlCt5HQzjSpViRaRUNGQaYlaSLJE0NiFN7b+lxQjAo+99UlUGqrV0sgzjrXG/GfXv5MvulpFz/mFfTjnUQmAjsJs0HZOtlQ1jRbfcq7IbrExkgyI2kkikTJOrwVl9S4vEkSKUm1Rus4eyACjJx1BAFJonAelFTkiUTKmMNzzlK5lOG4wAwkg0mBEmBdiCUJQda2kZ4FoaPL4th3/zp4iRCeiOncShEEH1Ftr/vpF/OyX3jLox71mIoLX35tcP1iS/a22S0JAc6zZ0cbo3U9Y6bWJLPQ1hSSkGpJqhVGq2n0GKUgM4pGmtAwmjzLMInBJBpJjP4HF/BKEkJUpqjRX3K6/0mBrRxFWZFojZaCRMNoIilKSzl1JYxDyWig9Mcl1pUIpTh4bEJVSLTcnGzaOlFK4tbHvPRFV/PiG64IN9123yMu8dgzTm254YQUglBUXP+UHTz18i777j1JanJc8A+bdSFafUaRmhjCEiFgVJx9rSyhmSU00oQsy0hSg1aqjl96RBAxA1DPZiklQsmZh0EAL0EJR55mSK1Ik4TSlRSTgtGkpLKxPKudKpqJ5CiW9UmBURlHTvY5uq64tB1B0lux/z9cQgBU4Nde8Xxuuu2+R7z/qIqzt70m+H55xvm1JxQBznqSbs6Pfdez+D//+MP1TYbZrJjNNqNoJZLcxCdbKUFuDN08p93MaDRysiQhSRISo5FSROc+BLyL51NKUVUV3gfKosBax3BS0BsOqQqH1gZPwCSGZpZinCJLExa68V6LsqS0gUlZsXO1yb4Hl1geTFjtDTmy4rl0ToJ7/K98tqKUxA8K/v0Lr+A51+0JX9h/agbhURWnck1VlE8uHvkYIpXEDwt+8T89h3/41/3c8pWj5EmKq5OgAY9S0EpV9Km0wmhJK09Z6HZoN3OMlng8RVXGxIyERJqI8HIx8hHTM1Gcs1RVRVGUFEVJ8AGHYDgaYbQmSzPSLEOKOLu1kUgt0EqhpUQnKdIkPPW++3n7Rz5Dv7/OsTUPUhHCOZpygPMBkxl+7gefwyt/+8gp7z1CcWsf//UQRkW90W+9CMDZQNo2/OEvfTsv/uk34+vHdlp908g0C62UZhr3t0aa0W030FrSGwwZjse4ypJnKd12k/lOm3YjxxiDtzEaIwARJLJWoFIKYzQtFaMpZeWglZOnGYkxaK1oNBqkWQZKYJ0nyXIajZxms0nWyNm+cxu377+bW+5a4d5jAxAZ52zKEf3SMCz4/n93Hf/1z28KR5d6syfkEdrp7mrhyq3x2x7zhpTA9kte+M2X88s/+nyKYhwD17VxsquTs9jOaOYprTwlTwy2dBxbWuPB48usDcb1EuYYjArW+wN66+uMhkOccwghSJKUJDWkqSFJErSU4Dzj4ZBiUhB89PO0EoTgGPZ69JeX8bZEC8gbOa1WmzxvkWUNjE7pdhe5eu8eYMCBB5aBaBCdKxFC4CpHZ2eT//ht153y3imK++xf/2SgLnU61yKlwA0nvP5nv5Uf/PfPYjQZE3A0MsVT9iyyc6HNXCePcHMBo8mE4XiCQpBrQ5ZofPCMRhPW10cMBkMmkwnOlZhEkzcatNodmq0GRknKoqQ/GLLS63NytcfK2jrBVjRSQyNLEARWV1dYOnYMWxQIF0M6SWJQKi6hSZJx2SW7EQQOH10BrxAinEPVER/myvLDL70WscnhPUVDz3nGbsJ4a1MWj3c/wkOqPO/4g+/jJ773G7BVyRUXbeOaK3axfaHDXLNJI09pN3N2LnS58uId7L1oB9vnWjhnWe2ts9Rb5/haj5OrPUbjUcSKaEnezGi0c4yRWG/pTyqOrvU5vrKOtY7MaKwLrPZHKGW49LJLaLVbHHvoKP3VNXxZUg4HFMW4xqiAMYZtiws0JCyt9JhYdU5XJqiXy3HJNz7jIq67Ytfs9VP2ON1JqVaG58QoeTQRIu532jhe9zMv4h0f3c+ubfPsWFxkZaWHEhpjLa1mC+8c/X4fbz1BCjqNBqNRwYm1PqtKMZhE46TdSDFakWUJSimGzlI5yUpvSK/XR0pFgeKelSEPrR6nPb9I15zg0m7KM67eG2fe0kkSY+gsStxkiE8Msg48t1ot5jsNVlZ7DCaOLBNxmzuHCrQuYBZSvudFV7PvvmPAphn3yTe8MlC5Jw3+PFORShBKx875nF2LDVQdflIqPlN5nlNWJf31dcqi5Ohqny8dOslXjqxwYuRAKOykZDwp6I3GWGtRwSPqrALEUFe3kyGdB+e56OLdNObmkI2MQTWmMAnp/A5uue1LJKlhftsi1hcEOyFUJa4a430swBQSWq2csqiw7ly4348UIYDK813Pv4JpKH42477hqbthUp52nfSW3RQRg6LylIu2N6M5rjXRlnAUgwkSQX844US/5Eh/zMnBhLK0tPKEiztzrD90mE7TkGmFJIa78DG4rI2hmWvmOw3muy0mZYG2JZd0WxEgFDxXXbyLq3bs5KT2DId9LtrdJa+tVK1rmLsHgaWqHONJST5nMMpDKBGk53SMpJAwqbjhqbvZs73LkZNrG4prLubY3mhLQ1ynK8EHSATPf9al3PNggQgOb0tcVWJLy3hScN/hZS66dC/Z/ALhyDESoVhsppjgcAtzdJsJ850meWoQWpHkTYw25FlFkZU08oIdOxZZXV5lfWmJVrvJM7a3SdOcZpbiinX2XrYH7y1aKdrdLkIKlNKYJMU7i6xjqMdX+ly52+L1AsOQk4RVtNiA+m21CAG2cjQWG3zT0y/iPR/fpDjUuTRsn+DGpIDC8p+/62n89fvvp5hU+MqRaEMxKVFG8dxnXUOvN6SygWdt75DoiEE5vjqO8IVmwrZOk9RMHeom2mgaNcAoTVPyLOdoltPrrVNVJcP+OqEYI20DPTeHD55Wu02j0aTZ7qC1rgdtgitLnHd0ul1+7Hu+neuf9nROLm9DioRO4zi7G/cTkGx9li5KAFCCF1x/Ce/5+P6ouE/8z1cGKnve97epxBim5apLFviGawoO3nssGkhCEtptpFR4Z0l0wJUTRBBMRhYXBI00IU0Ei+2Mdp4gpcAkCUma4IEky8lthTYGozWtZkZvfcRwOMKWFUpClmckSUJqDGma0Gp3ybK4VCqtGA8FRWXRQCNr8r0v+UbKkyvc/A9vpvfVO3nmd7yUXf/hMoQdnjNXSggB1vGca3cDBA3wlEvnobT1Zn6hxKOaKbsXUu67R5BlKT4IkhyKylIMKySQpgneBlJj8AKMEqQm5s9kYlBKoU2CnmYf0ixSXRQlWiUoBO1Wi7JyTMYTZBDoLCVJNUoImp058izHJClKK6SSJGmKsxYpJFmWcui+A9x92x1Mjp9gz2CFQ1/9Mva7LiXZ7GhtsUghoLRcfdkCC51mnHE7F3KC9efcJ3ksESIwmGTc8eUB9z80Jm8khEogZNyvrPNMlKQyURneBYJ3CBnIkoSqKjF5glQCbQyJSWLILniQkrTRwhiLsw5BoBiP6LbadBotEAKpFCGEqCRj0Ko2kJQmBIsQEm2iu5EKyWQ0Zu9Tr2E810Xu/yJZM6uXyHM3gKIGFO1YaHDVJQtRcSpLcKNiyxC6ZyIhBIQ2fPqWI3zms/fQWGjT6TaovEebBKUTIJBKSamG2LKMGBURq0kraxEqxeQZWEeSZpE5z3vSNI/ZgeAxaUpgjBQBo1WsljMarSPIVSoTy4tNgpIavCPU6OlQ/62kQqcZV1x3Hd45VqVgaf+XyBa6aBUIVThnAWeoOVaaGVfvXaj9OCXOSRr+tEUpDn7pS6x89lP49eVYo6NUbYrHjLZRkjRJaOQ5WZZijIpgHylQRlKNx6RZhlKaYX+dSTEmCIVUGi0VtixwtsKWBdVoRFUMkUJEZZiUJE1pNNvkjRZSR6CQLUf4qkCEgJQSrRRGa5YP3sX60SPkeQPbXmTnlXsQwj6sYGXrJcRKFq65bBH9tt/5oUDw58OPfPSbCQGUYMeOFn5QoasCoQRSxaVuWhEqERijcWyUSYUQYenFpKLVaZNkCctLS6yvrVHYis62Ac1Ek6Y5eaODKwsmgz7FYJ202SbNGpCkCCmRSqETg1IaBdiqigivEGt8tNIgINGatYMPUhYFe5/9bBZueAbXXL0I7hyHTzYGjCsuWkBfsr0dndVzf8nHEAHeccV1lyFyiRJqWlgVq0W9j8UXSiBFTMvbqsJbh7WOSTEhyVPyRpOjh49TOkcoSyrrmFTwpX33sGd7i+d/8/NI0ybeOcpyjFCSohihTIqQghA03rvaBYh7mhMBW1azUuPgPUIJOjt3sfzAQVTS4qobrmGxC8E+Pqvf1oyUAO+5dEcbvW0hB/dIwM75EiEElBVXX3MRC1fvoXKxYH5a/iGlmFXyTE22KWgIL6gmlmarTe/EMu+88VbmFub4lmt3s7K2BlLxudv3sbqyxpyyXHn9c5BJQpI38bbClhOcLZFa4bzHWUuJROs4u4SKS3YIPlYRCQgO8mabRrNFa24b27c5CEXNfnmuxwpwgW0LTfRcK4vAiQskQoC3nmY34/kvex5f2r+KCDYuXzJC7wQCXJgVL04/6L3Dec/62jrD4Yid7YxLd8/hXXSFL7l8L7/8v13GoXvuZW2lz/FDD9Ddth0pYLzem0HcbVGgtYEkJQSHdaEukAyRaSrEJyUEcK4kaM3i5VfQnJtDydVzapA8Qrxnrp2hW5mqrbTzd+1HiJSEouIlL76Kk8WDjIflzBiYAmMlcW+LMLno10ilyBsZq2sDxhPHM66+FJUaxlVFAoyLkp27L6XRaDFa79PudkibGQiBrUrClOY3QFlOUIlBywQZ2CAf9XGPc86BkoxHAy552vWEomTl8CEu/oZtEEYgFOfOi4syre9sZBKdJLpedy7oLgc+kKWSVjtl1K8wSsRKGSkQBJyv8DaiiqUSaGEQWiC1IgiNGE0orSUgabRaDMdjVpaXWNh9Gdn8Nro7doJz2HKCSjLSVgfvXPS+tCR4z2TQJ81zdJrha4ymtx5BNIIQCo+g2Wrhpaa9sEi36bceDvd4EmLwQSslNhW7XzipIzpUE49UsQI1sigAIcLupKz5uaREGoUKmhAK0gBziaawFQhJmmWMlWJ1ZY1JMUKnKVUIKCnxWmGtxKsEH0qc8CAcwTpCFRWUBkDFZRoP3lUgIqjWB4+vSloLO2i2jtPUDxHCuYtRPlxCiNTROpY9XVilTSUAQdTFiETG8uBjbg0vZn6MUBqpNZOqwEogUSgHuUlI0pxGq8PIJAzWVpis9+guLGKrEicihG9cjBkP+zMElzKKypZIoLQlYRLqjEC0cL2LtQZCSFCa0XDEYPVunnn1GK3FOcNWPp5o5z1GX2AHfJNMK1OnxDCBjb0N5xBGIbSmspbCVpTE5KaSikRrunNzzG/bSTE3T7V9gU6nRSolqtnEBej3VphUY9bWllHBI3EYs4BMDXY0QYpqVlKsTYrSEXMSS4s9KBiXgcu3D1joCrw9v0qLEJSALiqLMcn5XacfRUIArcBoifURau6tjZactQQcHocWhsqVlFVJWcXi+3Yjx5aW1eMrDE/2KFb6dBa3oYJh+cGHOHr3/WR5xuKePbQW57F2yEN3LzEejBEBTJqSN1sIrWoaKkFlK6Q2KB9wISCUBDyTScnuuXWeepm+IDMNUWcqBhNPq8kMQXwhRQiB0bFodUrVFHy07HzwBCGw1lHZiqKqGAxGJEazvLTKkUMnqWzACMmhw0tkyQM0GzlSKioba9zCF/eRtVLy+Xm+vO8wxXCdZ3podVqkeYMkS7FlWc/6gLM21t0pRXCB0jnSXPP0y5MY1TnP4zPV0XDs0b3BhF3bczaTtVwICSEgJOSZjMpSEKTc4NpyDqk1yIiGLvsFXz1wP8sDi6ocC602OxbnmWt3aDRyGiah05ljfvtO0mYTbQwhBJZOHuXY0lGuvfpK7r/vbpZOnmTXJbvoLm5Hy5jO8d7hncO5Ko5ICCAlZWWZ74KW4QItUAGkojcYo0+ujLjmKYuEsAX13U/qlgRIaDeTmuqwDnsRYkjKTRnIIyw8MZK5dkanZbhk53bmGi1aeQuTJiRJSpqmSCnJMmi0DSbL0Ilm+yXzPF1fRzUacOzolRzYv59JMaYoxyQ6jQaRkHgcIgSscwg8QkmcgzxxMShfnf8VKtTW7onVPvrwiX682fN7D4+Q+GTD4lwaM+LOAzX1YZ3GCc5hQ0BpSZamXPuUS0nTBKSmnFh64xXCqIafu5h01cbQ2b6dzrZtZM0GSZWgZcRDzm3bzVVPg+WlJYrJBK3HpEla5/w8wblIISwEChVnXDMH8bhlhedMAgGk4NDxIfreIyt1uv0CO+F1HG7Ptpw005STEqUix7HwLlbhhDqO6TxSaxKlCAiCcDhhqUKFEBIlDeNijMgSlNFM7AQ97CGEI2QZQRuMNgQfSNMW3XlPWVq8tTitwcdAtrN25s+VzpJo2D6nwYotJao5s4GS3PfQKvI3/vxjgtqSutDinafV0uzekVG6mFKRdTKzchbnHbasqKoyshBJQcDjbCyuD7GjAxJo5GmkzkgNqY4ENrImYXPB4Z2NqRuIYS4Ra+psWeKqCmtLXHBYa/EulmctdKHRFFte+326EmO2cOCB5ZgB3ypKvycvcZ972lO6HDi4WhflT+mZAB/wwiKUwpUOH2LKJTgH3iG8ByEIwZKYhCxPaLZaZI0malpDV1VIDwVVrO0OHmUUqUgJLhBcRVVVWOvqOvM46yfFhGsvnYsm7wXaWKQUuEnJgftPxgz4iZUxwsgL7crNcBWX7W6za3uTifV4Ed2AICReQFCR4rCqLLasmAxHlEUZoyvERhRKCaSCLG9g0hSdRLyICCFmwMsxzkfyNR8i36U2ESFmy4qqjIx61sVjev0BT9mTsWtHA78VJD1nISGAMJITKyPuObQaFXf3g0uQ6C2hsX2yEkLAJIIXPHMnzgucn8YmY0A5Jlin0RWPdw5vY2F9mqakaYJSEq3NrL9AkqQ0W13SvEneaKOTJELcha6NDxAhMjlYH3A+8ihb51kfjcgywYuec1Gc2RfI9PYhQKI58OAyK+ujqLhb9x8DrZ6Qy/h8iBACXzqu3NvhhusWWBsU+OBqxyDGT4TcoCiUStWUGRKTJugkIc0yskYDafQG0FdqTNag0Zqj3V4gSXOMNkgVfUXnHFVV4QhU3lFUFePJhP6w5Nnf9M1kqZmleC6EhBBAa27bv6no41f/+COCC/cwPUKEEHhr+bZv3sPTr1pgpT/Ge+oiC1WzRQWU0EipSZIEYwz4QHAeaytcVWDLgrKsKKuSyk5qp9rGuGcAhKAqCorRmGJSYCtHVUVe5klRMRwWXHXd01mYv4iqunAoAajtfee5+csPwmaHZLg8pJlvxOouuHiQMvADL7sSax13fO0Y7dzENqjOImqcjNQaJSXOepyo4tIXBMGXBCTe9fDYyMjgorvgbDwuCI/1jnFRYG2FtZ7JpKAsSgob2HnpXi6+5DLGo5KQGwTxnOfbOAkBtFGMVkbc8pWHgE3VOrd/7Rjf8s178YOCC1D38QiJ4JxIRPMj3/1UGrniE58/GCmh6kdLaY0OMKmiaR+8R2uN0YbKRRyIq/cqawNpo4EUAmtt5EWRgslkQlEWFEWJd4FiUuCkZNtFu7n40r1oofAoSq9JFFwIi9IHj8wybrvjMEdO9oBNivvgzffyLS96CiFMuJCO+GYRomZKF4Hve+nVXLSjxXtu3Md6b4A2CpOkpFrjraMsy+iYS0uzEQE/RWWprEdOSibWkRVFHAQBJkmwPqKby7LEWhfpxJRhbmGB7bt2k6Q5gtjlsfIadLggnsCUA+2DN9+7MTabD6g+/9+CCvbhL39dSKS6T7j9y2u8+T1fYNJbQSoVjRNfY0J8dNiTNImxSiEoiiLSQTXqosk0opd9nQEQIlLVBwJBKhrNLtt3X0R3foE8a5EnCWnW4tK5k2xLj+GDPm/Z7s3ihOLZP/IGvnLfMQEPKyX+wp1HeN43XrLl1LVbIUII/Kjksl0t9l6+l8MHY2mxraroJDuPtxGUKsoK0R9FJDRxaZS9PsZosjyl1WxiEoNWOqK6rEVoRaPdpru4jVargxEaLQSiNnic0zwmYdw5FOcDuply660Psu/g8dnrpyjurTfu53nPvwLChK0nF3vyImXc+CSS+cXtCCEYDodUVaQlLGtGPR/qznFF7DMXAIIn9Y7SxShM7PQYG0lkecZid575bbvodOcxJolGjvd4GWpO5ylM9/xKqEEmb79x3ynu2ilmyP94x2fF2vF1lHlinuTzLgLwkBqBMQoRFM1Gi06nQ5blJGka45E1yeh0hJ2LubUQoLKWylkKW1LaCqUlcwsL7LnkMrbvvIh2e45EpxExTYxJBh/JRq2T531/CwF0ougd7/Ouj+2fjgLwKMxC7/3Xu/jPP3IDdu38sS+ciWgVSWUiV5em0WijkoxkMsEWFaPxmOFoFAPBNZel1po0TcjThKyR02g2I1tQlsUixjQj1WkEDwmJ9BFuHpQAFQPXpdcE5HlFCjjvMY0m//C+Ozm6tH7qODz84Ff+9nvEj7/8+vD1tsdNJRCBQbrmRfYhkCuDFBqrCqSUJEkCCJTUJGlKmsVQWJpnpGlG3shJ04zEJBhlYuRFKLSQ0YkPUySziJ0ivaNwKaVPSXWBs4JzxJh1iigpcJOKv3jXbfAwi/FRL//RT9+LbKVb0sVp6yU2SjI6QesEgkTKaClKGd2ALE1pNnLazSatRoM8z0mznDRrkuVN8rxZKy5FSUkiDEpoIHYvDs4iEDgbcM5GxRWBY+OL6Q0sKjdA7HsXextsPbuQcx7Zyvjop+/lC189/Ij3H1Vx3/GLbxG4s+/Qu9USMfsBFzzWQllaCB5V1xcIEbn7Z03ggyCC/gVCRTZ0YxISnaCVRiARQSKCQMS6Lah5LkUQeOupipLgYwbch4CzFUFt5y8+uMpfvusriNSgOwm6aVBprNULProtW2EfCAH4wO//3WfgUfyzx8zB3/jJu3jpS67Bro+3nrfyNCTmRCN6WWqFTDQkkqUTA4q6g5ZzNcg/RDZ0KRRKGIR0KKHq7h8xkpKlNW+JVAgXmR6EFPjKEkKFMDKCXpXEI5B+g/xUSoXHI6Vnz+69/O+/9xHuPFRx2TbB3j0LPP2yNpfvapA3I5iJKkLXp/lWKc6sBCv2is258V/v4uO3HXzUYx5TcS/7hbcId8drAvL8QRqmhRaCgEo0Mkth4jm5MmTfPce59+g63bkr696psceO38wWYWOVjhASBRip4s9spkUsSwgBh0O4gPBu1r1EShEHWcamSkLUvMw+oJRBSMVkNCBUJR/+7AMMR0PW13s89SlXcP01F3P9FR2ec1WTqy7K2b0tQ5q6Nqu0kcoKcVoEQEIKfOH4b395EzzG4D8u6uUt7/0yP/7DN1CtPbl+Oo8nG8oClUikMSAkR4/0+MCn7+d9n7yHuw6tcnJtwgu/8Zn82MsyvFuN+0qoswF+U8tM52ZYzKqskEJSqaLeBzVIiVCxhNhXFikCXqjYGCJEgJIkWqOB6ABPlWdt4NOf/xKVd4RqzEK7SabhoYceYjAs+NqDu3j/Z1PK8QoXzQuefe1OnvvUBZ5xxRw7FgwQ8GV43NnnnEfPN3jzO27nln2P3Num8oT6X/nEr4Vuw9TFj2esl8eUWMIU+4eSaQjw0EMDbr9rmQ9+5h4+9KkDHFke02m3aLUatNOEX/+plyNsxcrSEsE5yqJgPBjW2JG4LjnvYxTFeWQIpFlGs9uN8AWtSExCYlK0VsgQEEHGmGeaotMEHzxamlh+JSOlVJIm5I0Ga/0+P/Gq/5uBFTX8T5GmkfWBEFBSs/fypxCAA3ffy9p6j26nxTOvvZLvfMHlfOvTMp51eSPCDx9lTGJZtaQ3sjzjB/+CIyd7jzniT4gz+80/vYk/fd33bAmrnq+LA5UElSowmtHahM/e/hDv/cT9fOjmezl45ATBWpqtBnv37KKyBYNBn2fuvYqFVpPDh48QXF29IyLLeTVlyK7BQppYzYMPaKVJkmxm7icqpoGkkBBCpLOvnW1f18B5WWcfhIwpoxBIs4R3v+1jHFtZpzs3j3UODVRVBQGMSeivD+j1erTaLZ759Gs5evQhhsMRR4+v8fZ/uZ+PfXkb/+VlXb77uV3sJDwiC+NcwMzl/Obv/9MsC/BY8oSK+7N33SJ+8NuuCy9+4eW1oXJmyotjGdBKoFJN7Onl2H/fgH+66W7+4WP7ue/4iNWVHoSCPEtJGm3m5+fpD/pIpRgOB1y2a5FiPMbZkmlgZNoswmiDtRVBbLSJlgh0mmCyFFVnzAXTPctHDItzsyx6IPb3UUrN+FGEljigmaV8Zf89vPsjnyRvNPDORZhgzSPtrKUoCqyr8C4wHIw5cfwEC4uLBCTLS8dZXT6OKy/nbz/meNqlOXt3plSFm5GIW+tI53I+cdPd/MW7vwBPsBqeFrLzJT/9JrH+6VeHRqoI7uFU84+jsBDQiUJmGrdecOCeZe482OPDtxzlIzffxdFjS3S6LYItSI1HmyYheFqtdkxoliUmiQUpmVGUxWQjgVrHEqVSkQS7NjCCpGbO2+iKFayLidQADhujITrgXWzMMM0yIGIxZY30BhH3QyEkb3jH++hNKjqtZMYdLQFrbdxPq6o2aEASWDpxnEOH7iPPc4xJcMGzfOIoJsv5+0/k/NoP7sK0zHSgUA3NYL3iJ3/nA/jgn3CATxuS+0u/98/8ze//ANVav14yH/3cIQRcAJNIZJpw9Mg67/yXe/nY7Ue4/9iEk6tDlpZOooRj144u6/0BVVVFImwf6HYW8CEwKUYgogNMAF+VVJNJzADUWXpfQxCMNnUL8AgvELpWAIALuMriHDVdVNy/vAclNUJGhYkaSh1CQGmNUBrrA4vtFm9+1we5+Y59dDrduslF9O0SpWqsSolzFdJkBO+RSUKr3Y7VxYSYciJQ2QpXjLjlwJhf/LO7eOHT5tAGjpyc0O3mvPf9n+aeQ0unpY/TVtybPnC7eP6zLgk/+WPfSLU0QD+s306sYwtoLZGZ5qEjA/7+xn28++MHOb4W+90M+iusry2RGEO73WV1bY0QAkkSo/GtVpvgYTwaRRYNH5g2ZF9dW2Uy2kk5ngDU/UtjMwiUQNZEWqHet0BE4KyLWfEgVMRVWkuYIruMnp0nQIRL6NitsXKeuYUuH//05/mbf/wwebM16+UzXaKnDyrUy7bcqFmP3bR0ZAYEimLCpBixvHSChW0L7Lu/5BO3fZUkNVy291Luu/cr3HnHPjhN3+uMQPA/9fp/Es+4akd47g2XYHtjlI77nav3MNlMWF4a8f4bH+BNH7iH+44O0MJSjvqsra9QFhWtVptms8naWg+BwiQKrRR53sJow9raKkpF+gqITrgnsLK8zmgwpKxKpJA4b6PjLSKZTRAxGCalmX1OCoHUApREOIdwApTDVSXKaJAGoWLIjBBbuiAklfV05zp8ed8B/vsb34bQySnbgxCQmCQS5Pg6hSRUTCHV4S9RGz91hgmtDcZExQ77I+bmuxTjAXOdLsPl4xy485bTVtoZKw7gea94ozj8kVeFPTtzqmGFVhLd0IyHlre9727e+tEHuPdQD3xFMVxjbVxACBidsbiwE6UkKysrADUDqyFJDI1Gg16vh/eeJEnwxHRM7FcqOLayxupKjzTPa6aEgAwuVvmoOGhKGbRK0NrgnKUoJhF6V1QxEVuH9jVh9tBNxQsQSmC9p91q8ZWv3c1r/+zvGFvIEhV9zVp5Wpu6/bSbzb5ZKxgRQ2ZKbijS1T2EyrJCUGCrisFgyMryKidPHOfBQ3dhrT0jZ+usyk5e/ktv41//5hW0uyl+bPnYLSd44/vv5fP7j2OURvqSpeWTGJPQabex1tFud5ESjh07SgihBqwqjDG0Wm2cc5RlAdStVXy9DNVF8yvDCb3+iK6UpHmGlgpna8qmafpGKrIsQ0iNJiUoyWTQj460taiaeCZC2yOLkZQqWrpEH7DdavDF/Qf473/1VtYmljxN8HW10PRhmxILxGVz2nUyugQgcNbWVq+qrzWzQaiqkn6/x/zCAmUx5PBD98V9/AzlrBT3ha8dFj/yq+8Kr/nl7+ZvP3gf/3rrMWxZoIVnfW2JohjTbndnnJGdzjwheI4fPzp7MqWUGGNoNlsoZVhfX5/tT0mSUNoCS0QYCylZLxyldTFZKiRK6Rpr6Gb7joQISdBpjUqukEpiizKSqtn4IKRJOpsdQsrZ4LfynJtvvZM/ees/MrZEpfmY4gFmdFHThysmWiOKWtXnmTZjisulqGdd3KfllDxgXFCWEwajtanSzji0cdaFXh+6+S7xma+shB0XXYkWFYSS1bUexhjmF7YhiKZyo9HEGM2RI4fqTXuqNE2WZeRZzqDu0AGCPM8RoibNiWWNKCkZFCXLY8feNEenJrYmI8FXVTQ4nAMTwQWxUaHC+CSCiXR0HYJ3eCdAZvE1JQgytqBOkoQbP/MF/vwd/4RXhsTousAyKioqQQMbS6IQ4KJjiJLpKYaOkBvZlemDFYtMAt5X3Hb7zaysnDwrpT0pxQH01pcEuLCwuJvhoE+z0YgBYBfLnoyJmeeTJ0/MesUJITEmIo/zvIV1nrIsAYExhizLGI2GeOejwyxqfwm47f4jPPvaK1FSkGQZIgis0riiIJTlbKC8d8jaMU/SLEZFysi4J6SMNQhSgdLkWUp/MOKd776JD3z2C5gkJZFxP1Rq2p9c1DMsWqhRplU78X2pFEoqrK0AsVH2tam4x/tI1//QsfuZTEbTk5yVPOnSyt76qhhPxmHnjj0RUVVVs6ex3W7T660ymYzrnJnGmBStTM2DbGqDJEYQ0jQDoCwLlJp2BnZ4AlopHjixxAc/90X+l5e9EJNkICSy0kxcDDYHAlJpkiStSdwESZpjrcUWk7i0IdHK0Gw0SdIGn7vjK7z1Qx/n4PFlms0G08bv06Vwuqz7msUvZhDqNpu1QgIhMsjWfp3zETkGkXo+drwUOOdYWTlBVRXx5p6EbElNbFlOxPETh8OO7RdjjKEsC1rNNuPxiH5/vV4ea/ZVZUjSlFarxXg8rpdIUNqQJGkMXQWYPuWuTtuEmgrp5v33IKTmFf/h21ic7zIcjfEOJqXFu/oJFxolxSn1dUHE/qjd+S660WLf/Uf46Oe+yK1fvQehFK1WY1atJOpw1saSKJC1lSiErMtPqA0dj5QxUStqYjhfx1JD/UchqWzJ6trWKA22SHEAZVmIY8cfDIsLu2m3W0ilWFlenn1ZraPpr7Sm2WwSQmAymcwK9ZXWKJMwGg2BGA0JKEpXzTAgwXsaacrN+77G4RMn+M4XPJdnXLWXbqtBpiXSWzqtFs1uN6K6qhSlJAKPwrPUH/P5O77Gl+55kHuPnsQGRzNrQIh7lYR6SDdMfGD2HTYkzHy46aycdibxPsQwWJj2wlMUxZil5WNnbYg8mpyTDOlFF10ajMoYjob1TNPoGiNikmiU9Pt9islk9mRmaQYE1td7hODJ8wZVVVKUxWwpFXX9txBQVBWusmzrtrh013Yu3r7IXCNj29wC3U4HKSXjScmJlWUOHz/OgydXOHRyhf64QOsIKFIi8phNoQYbUZFN7RhUNEhUTbitap/R1/FJay2NvEmnM4/3cb/e3Ai3P1xldfUkIRKmbZmcs9R2njVDpzNPkmQIIUjSBCEkjUaDsiwZDgY1eDW6AHmWMZkMGY1GNc1Fxmg0oqpKtI5cW8Bs2YwTI9JZlGUV6T7qP7PjPHhEhOlpTaLlRp+62s2I3Tk341Y26gSj+b/hSMeZJetwVywYqaqKTrtLo9GiquzMKS+rMcvLxxgMe+dknM8Z78N4MhSVLcO2hV10unPRka59r/FoNBscKURt2oO1bub7bDy1zGZAZatZS7BpVldJSSPLqOscZ+GmDfxj/Wodx3R1kFjUrLNRIWKmjGlTeKXMbLbBxnIphUagaqBsmG0DzsVlM0kS+v1Vjp04tGX72aPJOSXssLYSx04coijHYceOPTSbTQb9wSnB2mnUw9fwgxkSuZapoRBC7AVgNysvxP0xTBXD9OUwfbtGfW2Cz9XJvGlqxhgTGynVNeSzALF+uM8Wg9hxT6vntpBICcaks+9w7PghVlaPwTkG6pwXppXVtSUxHPXDrp2XoJSpo/cbgxTh3tG6jP26Y2KT2u+bsudthuFNuSynComjND1f2KS8eP7Z4IupIiLCmQBVGZfh6ZKoN0HZp0FjSXQDIlAWPB7vHUrFY1fXTnLs+IMRxnAe0FXnHXeXplmY6y7SbHZmrymlKMuSyWQUIQNa1xhKS7DRePHeYV01m5VTxp9psrRW12y2bhRITBFbAiFBSDUz7a112DoBOg3Pee/qAEE6C0xP+xNIqWduAj4wmvSxzjKeDBmN+vFi50nOP2CyljxrhG53kXarG+EJo2HMItdpvuleE0un6uINH4nRnHezOKPcFJWfLn/TaAaESHAT5IxNXSoNIgaCnT01uh9nV4hBAm02rQjUy2esM/feMRz16fdXKc/hPvZ4csEUN5Usa4ROex5dP+EBN3MRCODrwXXO1QaLj/wjYbPxoh6xL24smSDQNYWGJgClteA2zVyY/esJ0RJmmhjW9Tklzlkm4wGDYW+aybhg43fBFTcVpUzIs5w8b6B1Vg/+Jmd2OgNrI8Z7H5OpMPPxpqGoDcVFpiGtIq+Jr0NRzrmZPwYbSgshIpmNMTFOCighKMoJo9GA8XgwjfRc8HG74DfwKBKMSUnTjDTN494ybU4Uwgy4OkVYxeXRgQh1VmFjtkW/S6FUXPbKsojVqXLqi21WWnRNVBKNjaKYUEwmFMV4atbD19F4fd3cyGNIUCpGXYyJMHKl9CnL4lSZkeZDnpJOkVrFPFld1FiW5UxpU2t2aoFG48diqzKCelw1vcTX5Rh9Xd7U40iI+1KEkysZ0zNiFglRdZJVobSqIyMeW0WlTbPlIdRM67WxM1V8Lf8mxuT/B8DS6c8mVk6mAAAAAElFTkSuQmCC" alt="Sebastian" style="width:70px;height:70px;border-radius:50%;object-fit:cover;border:2.5px solid var(--gold-light);flex-shrink:0;">
+      <div class="author-box-text">
+        <div class="author-name">Sebastian — Author &amp; Affiliate Marketer</div>
+        <div class="author-bio">I run AffiliateProTeam and I've been building my online income with free traffic and list building for years. This guide is the exact starting point I'd give anyone who asked me where to begin.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BEFORE YOU START -->
+  <div class="step-section">
+    <div class="section-eyebrow">Before You Start</div>
+    <h2>Understand the Funnel First</h2>
+    <p>Before touching any tool, you need to understand the one system that makes free traffic actually work. It's called a funnel, and it looks like this:</p>
+    <div class="funnel-flow">
+      <span class="funnel-step">Traffic Source</span>
+      <span class="funnel-arrow">→</span>
+      <span class="funnel-step">Squeeze Page</span>
+      <span class="funnel-arrow">→</span>
+      <span class="funnel-step">Email List</span>
+      <span class="funnel-arrow">→</span>
+      <span class="funnel-step">Follow-Up Emails</span>
+      <span class="funnel-arrow">→</span>
+      <span class="funnel-step">Commissions</span>
+    </div>
+    <p>The squeeze page is the centre of everything. <strong>Never send free traffic directly to an affiliate offer</strong> — cold visitors don't buy. You capture their email first, build trust through follow-up, then promote. That's the system.</p>
+    <p>Everything in this guide is designed to get that system working for you as quickly as possible.</p>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="step-section">
+    <div class="step-badge">
+      <div class="step-number">1</div>
+      <div class="step-label">Step One · Your Platform</div>
+    </div>
+    <h2>Create Your Free LeadsLeap Account</h2>
+    <p>LeadsLeap is the all-in-one platform we'll use for everything in this guide — your squeeze page builder, your subscriber list manager, and your link tracker. The free plan is a powerful starting point. <strong>The Pro plan ($27/mo) unlocks the full autoresponder with automated sequences and free co-op ads</strong> — but you don't need it on day one. Let's walk before we run.</p>
+    <ul class="substeps">
+      <li data-n="1"><strong>Go to LeadsLeap</strong> using the link below and click "Join Free"</li>
+      <li data-n="2"><strong>Fill in your name, email and password</strong> — use a real email address you check regularly</li>
+      <li data-n="3"><strong>Confirm your email</strong> — check your inbox and click the confirmation link</li>
+      <li data-n="4"><strong>Log in and complete your profile</strong> — add a short bio and a profile photo if you have one</li>
+      <li data-n="5"><strong>Explore the dashboard</strong> — take 5 minutes to click around before we start building</li>
+    </ul>
+    <a href="https://llclickpro.com/nfx2pp9s/freetrafficforsuccess" target="_blank" class="link-btn">
+      Sign up for LeadsLeap (free) →
+    </a>
+    <div class="tip-box">
+      <strong>💡 Tip:</strong> The free plan is fully capable of everything you'll do in this guide. You don't need to upgrade to get started — the Pro plan is there when you're ready to grow.
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step-section">
+    <div class="step-badge">
+      <div class="step-number">2</div>
+      <div class="step-label">Step Two · Your Email List</div>
+    </div>
+    <h2>Set Up Your Subscriber List in SendSteed</h2>
+    <p>SendSteed is LeadsLeap's built-in list manager. On the free plan, you can collect subscribers and store them — but automated follow-up sequences require Pro. What you <em>can</em> do for free is send manual broadcast emails to your list whenever you want. That's more than enough to get started and start building relationships.</p>
+    <ul class="substeps">
+      <li data-n="1"><strong>Inside LeadsLeap, click "SendSteed"</strong> in the left sidebar — it opens the list manager dashboard</li>
+      <li data-n="2"><strong>Click "Create a new list"</strong> and give it a name (e.g. "Free Traffic Subscribers")</li>
+      <li data-n="3"><strong>Set your From Name and From Email</strong> — this is what subscribers will see when they receive your emails</li>
+      <li data-n="4"><strong>Save your list</strong> — you'll link it to your squeeze page opt-in form in the next step</li>
+      <li data-n="5"><strong>Note your list ID</strong> — you'll need this when connecting your squeeze page form</li>
+    </ul>
+    <div class="tip-box">
+      <strong>💡 Free plan note:</strong> The free plan doesn't include automated sequences — new subscribers won't receive a welcome email automatically. You'll need to send a manual broadcast to welcome new subscribers. When you're ready to automate, upgrading to <strong>LeadsLeap Pro</strong> unlocks the full autoresponder plus free daily co-op ads that send real traffic to your pages.
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step-section">
+    <div class="step-badge">
+      <div class="step-number">3</div>
+      <div class="step-label">Step Three · Your Squeeze Page</div>
+    </div>
+    <h2>Build Your First Squeeze Page</h2>
+    <p>Your squeeze page has one job: collect an email address in exchange for something valuable. LeadsLeap has a built-in page builder that makes this straightforward — no coding, no design skills needed.</p>
+    <ul class="substeps">
+      <li data-n="1"><strong>In LeadsLeap, click "My Pages"</strong> then "Create New Page"</li>
+      <li data-n="2"><strong>Choose a squeeze page template</strong> — pick a simple, clean one. You can customise the headline and copy later</li>
+      <li data-n="3"><strong>Write your headline</strong> — make it specific and benefit-driven. Focus on what the subscriber will be able to do after opting in</li>
+      <li data-n="4"><strong>Add 3–4 bullet points</strong> — short, punchy lines that tell visitors exactly what they'll get</li>
+      <li data-n="5"><strong>Connect your SendSteed list</strong> — in the form settings, link it to the list you created in Step 2</li>
+      <li data-n="6"><strong>Set a thank-you page</strong> — this is where subscribers go after opting in. It can be a simple message or a redirect to a resource</li>
+      <li data-n="7"><strong>Save and publish your page</strong> — LeadsLeap gives you a live URL you can share immediately</li>
+    </ul>
+    <div class="tip-box">
+      <strong>💡 Keep it simple:</strong> The best squeeze pages have one clear offer, a headline, a few bullets, and an opt-in form. Remove anything that distracts from the opt-in. Less is almost always more.
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="step-section">
+    <div class="step-badge">
+      <div class="step-number">4</div>
+      <div class="step-label">Step Four · Your Follow-Up</div>
+    </div>
+    <h2>Send Your Welcome Email — And Plan Your Follow-Up</h2>
+    <p>On the free plan, emails aren't sent automatically — you send them manually as broadcasts. That sounds like extra work, but it's actually a good habit early on. It keeps you actively engaging with your list rather than setting and forgetting.</p>
+    <ul class="substeps">
+      <li data-n="1"><strong>As soon as someone opts in,</strong> go to SendSteed → your list → Send Broadcast, and send your welcome email. Thank them, deliver what you promised, and tell them who you are in 2–3 sentences</li>
+      <li data-n="2"><strong>A few days later, send a value email:</strong> share a tip, a quick win, or a personal story about how you got started. Build trust before you recommend anything</li>
+      <li data-n="3"><strong>Then send a recommendation email:</strong> introduce LeadsLeap (or whatever you're promoting), explain what it is, why you use it, and include your affiliate link naturally</li>
+    </ul>
+    <p>Aim to email your list at least once a week. It doesn't have to be long — even a short, useful message keeps you present in their inbox and builds the relationship over time.</p>
+    <div class="tip-box">
+      <strong>💡 Ready to automate?</strong> When your list is growing and you're ready to put follow-ups on autopilot, <strong>LeadsLeap Pro</strong> gives you the full autoresponder. Automated sequences fire the moment someone subscribes — no manual sending needed. Pro also includes free daily ad credits that drive traffic to your pages without any extra effort.
+    </div>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="step-section">
+    <div class="step-badge">
+      <div class="step-number">5</div>
+      <div class="step-label">Step Five · Your Traffic</div>
+    </div>
+    <h2>Promote Your Squeeze Page for Free</h2>
+    <p>Your funnel is live. Now it needs visitors. Here are the three best free traffic sources to start with — all of them are available inside or compatible with LeadsLeap.</p>
+    <ul class="substeps">
+      <li data-n="1"><strong>LeadsLeap Co-op Ads:</strong> Earn credits by viewing other members' ads, then use those credits to show your squeeze page to the same community. Active marketers, real traffic — completely free</li>
+      <li data-n="2"><strong>LeadsLeap Network Ads:</strong> Submit your squeeze page as a network ad. It shows up across the LeadsLeap ecosystem and drives steady daily visitors without any extra effort</li>
+      <li data-n="3"><strong>Traffic Exchanges:</strong> Sites like TrafficAdBar, EasyHits4U and ListSurfing let you earn visitors by viewing other members' pages. Point your credits at your squeeze page URL — not an affiliate offer</li>
+    </ul>
+    <p>Start with 20–30 minutes per day. View ads in LeadsLeap and any traffic exchanges you join. Use every credit earned to send traffic to your squeeze page. Consistency over a few weeks is what builds momentum.</p>
+    <div class="tip-box">
+      <strong>💡 Track your links:</strong> Use LeadsLeap's built-in link tracker to create a tracked version of your squeeze page URL. This shows you exactly how many clicks each traffic source sends — so you know what's working.
+    </div>
+  </div>
+
+  <!-- STEP 6 -->
+  <div class="step-section">
+    <div class="step-badge">
+      <div class="step-number">6</div>
+      <div class="step-label">Step Six · Your Daily Routine</div>
+    </div>
+    <h2>The 30-Minute Daily Routine That Builds Your List</h2>
+    <p>You don't need hours every day. What you need is consistency. Here's the routine I recommend for anyone just getting started — 30 minutes a day, every day.</p>
+    <ul class="substeps">
+      <li data-n="1"><strong>5 min — Check your stats:</strong> Open LeadsLeap and look at your link tracker. How many clicks did your squeeze page get? How many opt-ins? This keeps you focused on what matters</li>
+      <li data-n="2"><strong>10 min — Earn traffic credits:</strong> View ads in LeadsLeap and any traffic exchanges you've joined. Every credit earned is a visitor you can send to your squeeze page</li>
+      <li data-n="3"><strong>10 min — Promote your page:</strong> Submit your credits to show your squeeze page across the network. Check that your ads are active and running</li>
+      <li data-n="4"><strong>5 min — Email your list:</strong> Once a week, send a broadcast to your list — a tip, a resource, a story, or a recommendation. Staying in touch is what turns subscribers into buyers</li>
+    </ul>
+    <div class="tip-box">
+      <strong>💡 The compound effect:</strong> 30 minutes a day doesn't feel like much. But after 30 days of consistent effort, you'll have a growing list, a tested squeeze page, and real data on what's working. That's a business.
+    </div>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="checklist-section">
+    <div class="section-eyebrow">Your Launch Checklist</div>
+    <h2>Before You Send Your First Visitor</h2>
+    <p>Run through this checklist to make sure everything is in place before you drive traffic to your page.</p>
+    <ul class="check-list">
+      <li class="check-item">
+        <div class="check-box"></div>
+        <div class="check-item-text"><strong>Sign up for <a href="https://llclickpro.com/nfx2pp9s/freetrafficforsuccess" target="_blank" style="color:var(--gold);text-decoration:underline;">LeadsLeap</a></strong> (free) and complete your profile</div>
+      </li>
+      <li class="check-item">
+        <div class="check-box"></div>
+        <div class="check-item-text"><strong>Create a subscriber list</strong> in SendSteed with your From Name and From Email set</div>
+      </li>
+      <li class="check-item">
+        <div class="check-box"></div>
+        <div class="check-item-text"><strong>Draft your welcome email</strong> — ready to send manually as a broadcast when your first subscriber opts in</div>
+      </li>
+      <li class="check-item">
+        <div class="check-box"></div>
+        <div class="check-item-text"><strong>Build your squeeze page</strong> using LeadsLeap's page builder and publish it live</div>
+      </li>
+      <li class="check-item">
+        <div class="check-box"></div>
+        <div class="check-item-text"><strong>Connect your opt-in form</strong> to your SendSteed list</div>
+      </li>
+      <li class="check-item">
+        <div class="check-box"></div>
+        <div class="check-item-text"><strong>Test your opt-in form</strong> — subscribe yourself and confirm the subscriber appears in your SendSteed list</div>
+      </li>
+      <li class="check-item">
+        <div class="check-box"></div>
+        <div class="check-item-text"><strong>Write 2–3 broadcast emails</strong> — a value email and a recommendation email ready to send to your list over the first week</div>
+      </li>
+      <li class="check-item">
+        <div class="check-box"></div>
+        <div class="check-item-text"><strong>Create a tracked link</strong> for your squeeze page in LeadsLeap's link tracker</div>
+      </li>
+      <li class="check-item">
+        <div class="check-box"></div>
+        <div class="check-item-text"><strong>Start earning ad credits</strong> in LeadsLeap by viewing member ads</div>
+      </li>
+      <li class="check-item">
+        <div class="check-box"></div>
+        <div class="check-item-text"><strong>Submit your squeeze page</strong> as a co-op ad and network ad in LeadsLeap</div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="final-cta">
+    <div class="section-eyebrow">Your Next Step</div>
+    <h2>Start With <span>LeadsLeap</span> — It's Free</h2>
+    <p>Everything in this guide runs on LeadsLeap. The free plan gives you the squeeze page builder, the subscriber list manager, the link tracker, and the traffic network. When you're ready to automate your follow-ups and unlock free daily ad credits, <strong>Pro is there waiting</strong> — but the free plan is the perfect place to start.</p>
+    <a href="https://llclickpro.com/nfx2pp9s/freetrafficforsuccess" target="_blank" class="cta-btn">
+      Join LeadsLeap Free →
+    </a>
+    <p class="cta-note">Free forever plan · No credit card · Upgrade anytime</p>
+  </div>
+
+  <!-- BACK COVER -->
+  <div class="back-cover">
+    <p>
+      © 2025 · AffiliateProTeam by Sebastian · affiliateproteam.com<br>
+      This guide contains affiliate links. We may earn a commission if you sign up — at no extra cost to you.<br>
+      <a href="#">Privacy Policy</a>
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
